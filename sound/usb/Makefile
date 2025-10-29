@@ -21,6 +21,7 @@ snd-usb-audio-y := 	card.o \
 			proc.o \
 			quirks.o \
 			stream.o \
+			audiobox_vsl.o \
 			validate.o
 
 snd-usb-audio-$(CONFIG_SND_USB_AUDIO_MIDI_V2) += midi2.o
