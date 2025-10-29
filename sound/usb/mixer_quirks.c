@@ -34,6 +34,7 @@
 #include "usbaudio.h"
 #include "mixer.h"
 #include "mixer_quirks.h"
+#include "audiobox_vsl.h"
 #include "mixer_scarlett.h"
 #include "mixer_scarlett2.h"
 #include "mixer_us16x08.h"
@@ -4244,6 +4245,10 @@ int snd_usb_mixer_apply_create_quirk(struct usb_mixer_interface *mixer)
 		return err;
 
 	switch (mixer->chip->usb_id) {
+	/* PreSonus AudioBox 22 VSL */
+	case USB_ID(0x194f, 0x0101):
+    		err = snd_audiobox_vsl_init(mixer);
+    		break;		
 	/* Tascam US-16x08 */
 	case USB_ID(0x0644, 0x8047):
 		err = snd_us16x08_controls_create(mixer);
